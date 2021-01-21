@@ -1,3 +1,6 @@
+//Dependencies
+const mysql = require('mysql');
+
 //MySQL connection
 var connection = mysql.createConnection({
     host: "localhost",
@@ -15,3 +18,6 @@ var connection = mysql.createConnection({
   
     console.log("connected as id " + connection.threadId);
   });
+
+  //Export
+  module.exports = connection;
