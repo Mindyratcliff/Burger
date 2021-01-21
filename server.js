@@ -15,3 +15,17 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//GET
+
+app.get("/", function(req,res){
+    connection.query("SELECT * FROM burgers;", function (err, data){
+        if (err) {
+            return res.status(500).end();
+        }
+        res.render("index", { burgers: data});
+    });
+});
+
+//POST
+
+
