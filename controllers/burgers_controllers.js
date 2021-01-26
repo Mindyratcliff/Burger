@@ -9,10 +9,8 @@ const burgers = require("../models/burger.js");
 //GET
 
 router.get("/", function(req,res){
-    connection.query("SELECT * FROM burgers;", function (err, data){
-        if (err) {
-            return res.status(500).end();
-        }
+    burgers.all(function (data){
+        
         res.render("index", { burgers: data});
     });
 });
