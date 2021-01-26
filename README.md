@@ -33,7 +33,7 @@ To use this:
 
 You will need to have MySQL installed.
 
-![ScreenShot](screenshot.png)
+![ScreenShot](screenshot.jpg)
 
 Link to deployed application on Heroku:
 
