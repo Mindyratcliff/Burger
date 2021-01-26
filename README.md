@@ -5,7 +5,7 @@
 
  
 
-This is a content management system using MySQL and Node. It uses the MySQL and Inquirer modules to dynamically update a MySQL schema which holds employee information. It has three tables with department, role, and employee data. The user can view, update, delete, and add to the schema with the command line. 
+This is an application designed to track burgers using a MySQL database. It uses Express Handlebars to develop the front-end along with JavaScript. The backend is developed with Express using an ORM to make changes to the MySQL database. 
 
 ## Table of Contents
 1.) [Usage](#usage)
