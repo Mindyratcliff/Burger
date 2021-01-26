@@ -1,6 +1,6 @@
 <h1>Eat-Da-Burger!</h1>
 
-<img src="public/assets/img/burgerbystella.png" id ="burger" alt="Image of Cartoon Burger"/> 
+<img src="./assets/img/burgerbystella.png" id ="burger" alt="Image of Cartoon Burger"/> 
 
 <h3>List the burgers you want to eat!</h3>
 
@@ -8,8 +8,10 @@
 <ul>
   {{#each burgers}}
   	<li>
-  	   <p>ID: {{this.id}}</p>
-       <p>Task: {{this.burger_name}}</p>
+       <p>Burger: {{this.burger_name}}</p>
+	    <button data-id="{{this.id}}" class="eatburger">Eat Burger</button>
+		<button data-id="{{this.id}}" class="delburger">Delete Burger</button>
+
   	</li>
   {{/each}}
 </ul>
@@ -20,15 +22,4 @@
 	<button type="submit">Add Burger</button>
 </form>
 
-<form action="/" method="UPDATE">
-	<textarea type="text" name="eatburger"></textarea>
-
-	<button type="submit">Eat Burger</button>
-</form>
-
-<form action="/" method="DELETE">
-	<textarea type="text" name="deleteburger"></textarea>
-
-	<button type="submit">Delete</button>
-</form>
 
