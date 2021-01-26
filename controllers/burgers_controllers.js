@@ -1,6 +1,6 @@
 //Dependencies
 const express = require("express");
-
+const connection = require("./config/connection.js");
 const router = express.Router();
 
 //Import Burgers
