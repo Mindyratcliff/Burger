@@ -1,6 +1,7 @@
 //Dependencies
 const express = require("express");
 const connection = require("../config/connection.js");
+const burger = require("../models/burger.js");
 const router = express.Router();
 
 //Import Burgers
@@ -10,6 +11,14 @@ const burgers = require("../models/burger.js");
 
 router.get("/", function (req, res) {
   burgers.all(function (data) {
+      for (var i = 0; i < data.length; i++) {
+          var eatenBurger = data[i];
+          if (eatenBurger.devoured == 1) {
+              eatenBurger.devoured = "Yes";
+          } else {
+              eatenBurger.devoured = "No";
+          };
+      }
     res.render("index", { burgers: data });
   });
 });
