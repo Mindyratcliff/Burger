@@ -9,11 +9,16 @@
   {{#each burgers}}
   	<li>
        <p>Burger: {{this.burger_name}}</p>
+	   <p>Devoured? {{this.devoured}}</p>
 	    <button data-id="{{this.id}}" class="eatburger">Eat Burger</button>
 		<button data-id="{{this.id}}" class="delburger">Delete Burger</button>
 
   	</li>
   {{/each}}
+</ul>
+
+<ul>
+	
 </ul>
 
 <form action="/" method="POST">

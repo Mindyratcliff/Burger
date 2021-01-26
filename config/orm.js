@@ -1,6 +1,23 @@
 const connection = require("../config/connection.js");
 
 // In the orm.js file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
+function objToSql(ob) {
+  var arr = [];
+
+  for (var key in ob) {
+    var value = ob[key];
+    
+    if (Object.hasOwnProperty.call(ob, key)) {
+      
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
+      }
+      arr.push(key + "=" + value);
+    }
+  }
+  return arr.toString();
+
+};
 
 var orm = {
 // selectAll()
@@ -52,8 +69,25 @@ update: function updateOne(table, objColVal, newState, cb) {
         cb(result);
       });
 
-}
+},
 
+// deleteOne()
+
+
+delete: function deleteOne(table, state, cb) {
+  var queryString = "DELETE FROM " + table;
+
+  queryString += " WHERE ";
+  queryString += state;
+
+  connection.query(queryString, function(err, result) {
+    if (err) {
+      throw err;
+    }
+
+    cb(result);
+  });
+}
 };
 
 

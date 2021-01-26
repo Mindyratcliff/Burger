@@ -18,25 +18,24 @@ router.get("/", function(req,res){
 //POST
 
 router.post("/api/burgers/:id", function(req, res){
-    connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger], function(err, data){
-        if (err) {
-            return res.status(500).end();
-        }
-        res.json({ id: result.insertId });
-        console.log({ id: result.insertId});
-    });
+    burgers.insertOne({
+        burger_name: req.body.burger,
+        devoured: false
+    }, function(data){
+        res.json({id: result.insertId})
+    })
+    
 });
 
 //UPDATE
 
 router.put("/api/burgers/:id", function(req, res){
-    connection.query("UPDATE burgers SET burger_name = ? WHERE id = ?", [req.body.burger, req.params.id], function (err, data){
-        if (err) {
-            return res.status(500).end();
-        }
-        else if (result.changedRows === 0) {
-            return res.status(404).end();
-        }
+    var state = "id = " + req.params.id;
+
+    burgers.update({
+        devoured: true
+    }, state, function(data)
+    {
         res.status(200).end();
     });
 });
@@ -44,15 +43,12 @@ router.put("/api/burgers/:id", function(req, res){
 //DELETE
 
 router.delete("api/burgers/:id", function (req, res) {
-    connection.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function (err, data){
-        if (err) {
-            return res.status(500).end();
-        }
-        else if (result.affectedRows === 0) {
-            return res.status(404).end();
-        }
+    var state = "id = " + req.params.id;
+    burgers.deleteOne(state, function (data){
+     
         res.status(200).end();
     });
+    
 });
 
 //Export
