@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static("public"));
 
 //Set up Port
-var PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3000;
 
 //Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Import Routes
-const routes = require("controllers/burgers_controllers.js");
+const routes = require("./controllers/burgers_controllers.js");
 
 app.use(routes);
 
