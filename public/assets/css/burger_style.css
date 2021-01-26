@@ -1,4 +1,14 @@
 html {
-    background-color: #FBE8A6;
-    color: #303C6C;
+    background-color: #FF0000;
+    color: white;
+}
+
+#burger {
+    height: 400px;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    padding-bottom: 20px
+
 }
