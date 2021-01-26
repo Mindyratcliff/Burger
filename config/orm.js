@@ -53,6 +53,8 @@ insert: function insertOne(table, col, val, cb){
     queryString += printQuestionMarks(val.length);
     queryString += ") ";
 
+    console.log(queryString);
+
     connection.query(queryString, val, function(err, result) {
         if (err) {
           throw err;

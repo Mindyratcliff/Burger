@@ -13,9 +13,9 @@ $(function() {
       );
     });
   
-    $("#addburger").on("click", function(event) {
+    $("#burger-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
-      
+      event.preventDefault();
   
       var newBurger = {
         burger: $("#burgertext").val().trim()
