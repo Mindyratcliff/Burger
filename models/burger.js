@@ -8,6 +8,12 @@ const burger = {
         cb(res);
       });
     },
+
+    delete: function(state, cb) {
+      orm.delete("burgers", state, function(res){
+        cb(res);
+      });
+    },
     
     insert: function(col, val, cb) {
       orm.insert("burgers", col, val, function(res) {

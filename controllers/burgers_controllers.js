@@ -12,17 +12,19 @@ router.get("/", function(req,res){
     burgers.all(function (data){
         
         res.render("index", { burgers: data});
+        
     });
 });
 
 //POST
 
-router.post("/api/burgers/:id", function(req, res){
-    burgers.insertOne({
+router.post("/api/burgers", function(req, res){
+    burgers.insert({
         burger_name: req.body.burger,
         devoured: false
     }, function(data){
-        res.json({id: result.insertId})
+        res.json({id: data.insertId})
+        res.status(200).end();
     })
     
 });
@@ -42,9 +44,9 @@ router.put("/api/burgers/:id", function(req, res){
 
 //DELETE
 
-router.delete("api/burgers/:id", function (req, res) {
+router.delete("/api/burgers/:id", function (req, res) {
     var state = "id = " + req.params.id;
-    burgers.deleteOne(state, function (data){
+    burgers.delete(state, function (data){
      
         res.status(200).end();
     });
