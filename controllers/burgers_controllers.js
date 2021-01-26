@@ -1,6 +1,6 @@
 //Dependencies
 const express = require("express");
-const connection = require("./config/connection.js");
+const connection = require("../config/connection.js");
 const router = express.Router();
 
 //Import Burgers
@@ -8,7 +8,7 @@ const burgers = require("../models/burger.js");
 
 //GET
 
-app.get("/", function(req,res){
+router.get("/", function(req,res){
     connection.query("SELECT * FROM burgers;", function (err, data){
         if (err) {
             return res.status(500).end();
@@ -19,7 +19,7 @@ app.get("/", function(req,res){
 
 //POST
 
-app.post("/api/burgers/:id", function(req, res){
+router.post("/api/burgers/:id", function(req, res){
     connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger], function(err, data){
         if (err) {
             return res.status(500).end();
@@ -31,7 +31,7 @@ app.post("/api/burgers/:id", function(req, res){
 
 //UPDATE
 
-app.put("/api/burgers/:id", function(req, res){
+router.put("/api/burgers/:id", function(req, res){
     connection.query("UPDATE burgers SET burger_name = ? WHERE id = ?", [req.body.burger, req.params.id], function (err, data){
         if (err) {
             return res.status(500).end();
@@ -45,7 +45,7 @@ app.put("/api/burgers/:id", function(req, res){
 
 //DELETE
 
-app.delete("api/burgers/:id", function (req, res) {
+router.delete("api/burgers/:id", function (req, res) {
     connection.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function (err, data){
         if (err) {
             return res.status(500).end();
