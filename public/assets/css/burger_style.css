@@ -1,6 +1,9 @@
 html {
     background-color: #FF0000;
     color: white;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 #burger {
